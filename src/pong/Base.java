@@ -1,10 +1,11 @@
 package pong;
 
-import java.awt.*;
 import javax.swing.JFrame;
 
 public class Base extends JFrame {
 	
+	private static final long serialVersionUID = 1L;
+
 	public static void main(String args[]) {
 		new Base();
 	}
@@ -12,8 +13,8 @@ public class Base extends JFrame {
 	public Base() {
 		add(new Board());
 		setTitle("Pong");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //hekked m8
-		setSize(500, 500);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		pack();
 		setVisible(true);
 		setResizable(false);
 	}

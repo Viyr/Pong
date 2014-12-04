@@ -2,22 +2,36 @@ package pong;
 
 import java.awt.Image;
 import java.awt.Rectangle;
+import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
 
 public class Paddle {
 
-	private int x, y;
+	private int x, y, dy;
 	
 	public Paddle(int whichPaddle) {
 		if(whichPaddle == 1) {
 			x = 50;
-			y = 250;
+			y = 300;
 		}
 		else {
-			x = 450;
-			y = 250;
+			x = 540;
+			y = 300;
 		}	
+		
+	}
+	
+	public void move() {
+		y += dy;
+		
+		if(y < 100) {
+			y = 100;
+		}
+		
+		if(y > 530) {
+			y = 530;
+		}
 	}
 	
 	public int getX() {
@@ -28,6 +42,25 @@ public class Paddle {
 		return y;
 	}
 	
+	public void keyPressed(KeyEvent e) {
+		int key = e.getKeyCode();
+				
+		if((key == KeyEvent.VK_W) || (key == KeyEvent.VK_UP)) {
+			dy = -4;
+		}
+		
+		if((key == KeyEvent.VK_S) || (key == KeyEvent.VK_DOWN)) {
+			dy = 4;
+		}
+		
+	}
 	
+	public void keyReleased(KeyEvent e) {
+		int key = e.getKeyCode();
+		
+		if((key == KeyEvent.VK_W) || (key == KeyEvent.VK_UP) || (key == KeyEvent.VK_S) || (key == KeyEvent.VK_DOWN)) {
+			dy = 0;
+		}
+	}
 	
 }
