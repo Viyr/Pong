@@ -13,17 +13,25 @@ public class Paddle {
 	public Paddle(int whichPaddle) {
 		if(whichPaddle == 1) {
 			x = 50;
-			y = 250;
+			y = 300;
 		}
 		else {
-			x = 450;
-			y = 250;
+			x = 540;
+			y = 300;
 		}	
 		
 	}
 	
 	public void move() {
 		y += dy;
+		
+		if(y < 100) {
+			y = 100;
+		}
+		
+		if(y > 530) {
+			y = 530;
+		}
 	}
 	
 	public int getX() {
@@ -38,11 +46,11 @@ public class Paddle {
 		int key = e.getKeyCode();
 				
 		if((key == KeyEvent.VK_W) || (key == KeyEvent.VK_UP)) {
-			dy = -2;
+			dy = -4;
 		}
 		
 		if((key == KeyEvent.VK_S) || (key == KeyEvent.VK_DOWN)) {
-			dy = 2;
+			dy = 4;
 		}
 		
 	}

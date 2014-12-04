@@ -1,6 +1,8 @@
 package pong;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
@@ -19,6 +21,8 @@ public class Board extends JPanel implements ActionListener
 	private Timer tickTimer;
 	private int B_WIDTH;
 	private int B_HEIGHT;
+	private int player1NumberOfWins;
+	private int player2NumberOfWins;
 	
 	public Board() {
 		addKeyListener(new TAdapter());
@@ -26,10 +30,12 @@ public class Board extends JPanel implements ActionListener
 		setVisible(true);
 		setBackground(Color.DARK_GRAY);
 		setDoubleBuffered(true);
+		setPreferredSize(new Dimension(600,600));
 		victory = false;
-		
 		B_WIDTH = getWidth();
-		B_HEIGHT = getHeight();  
+		B_HEIGHT = getHeight(); 
+		player1NumberOfWins = 0;
+		player2NumberOfWins = 0;
 		
 		paddle1 = new Paddle(1);
 		paddle2 = new Paddle(2);
@@ -44,12 +50,18 @@ public class Board extends JPanel implements ActionListener
 		
 		Graphics2D g2d = (Graphics2D)g;
 		
-		g2d.setColor(Color.GREEN);
+		g2d.setColor(Color.WHITE);
+		g2d.drawRect(0, 0, 599, 99);
+		g2d.setFont(new Font("Courier New", Font.BOLD, 100));
+		g2d.drawString("" + player1NumberOfWins, 50, 80);
+		g2d.drawString("" + player2NumberOfWins, 500, 80);
 		
+		
+		g2d.setColor(Color.GREEN);
+				
 		g2d.fillRect(paddle1.getX(), paddle1.getY(), 10, 70);
 		g2d.fillRect(paddle2.getX(), paddle2.getY(), 10, 70);
 		
-		g2d.setColor(Color.MAGENTA);
 		g2d.fillOval(250, 250, 25, 25);
 		
 		
