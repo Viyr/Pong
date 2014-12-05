@@ -6,7 +6,7 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
 
-public class Paddle {
+public class Paddle  {
 
 	private int x, y, dy;
 	
