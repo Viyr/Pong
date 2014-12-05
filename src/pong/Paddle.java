@@ -9,6 +9,8 @@ import javax.swing.ImageIcon;
 public class Paddle {
 
 	private int x, y, dy;
+	private Image paddleImage;
+	private ImageIcon paddlePic;
 	
 	public Paddle(int whichPaddle) {
 		if(whichPaddle == 1) {
@@ -18,8 +20,9 @@ public class Paddle {
 		else {
 			x = 540;
 			y = 300;
-		}	
-		
+		}
+		paddlePic = new ImageIcon("Paddle");
+		paddleImage = paddlePic.getImage();
 	}
 	
 	public void move() {
@@ -32,6 +35,10 @@ public class Paddle {
 		if(y > 530) {
 			y = 530;
 		}
+	}
+	
+	public Image getImage() {
+		return paddleImage;
 	}
 	
 	public int getX() {
